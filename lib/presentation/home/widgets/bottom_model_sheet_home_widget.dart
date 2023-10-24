@@ -3,16 +3,12 @@ import 'package:language_translator_app/core/colors/colors.dart';
 import 'package:language_translator_app/core/constants/constants.dart';
 
 class BottomModalSheetContentWidget extends StatelessWidget {
-  const BottomModalSheetContentWidget(
-      {super.key,
-      required this.text,
-      required this.language,
-      required this.itemCount});
+  const BottomModalSheetContentWidget({
+    super.key, required this.text, required this.child,
+  });
 
-  final String text;
-  final String language;
-  final int itemCount;
-
+final String text;
+final Widget child;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,32 +29,7 @@ class BottomModalSheetContentWidget extends StatelessWidget {
         kheight10,
         kheight5,
         Expanded(
-          child: ListView.separated(
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    color: kblack,
-                  ),
-                  height: MediaQuery.of(context).size.height * 0.10,
-                  width: MediaQuery.of(context).size.width * 0.90,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          language,
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        Text("(en)", style: const TextStyle(fontSize: 20))
-                      ],
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) => kheight10,
-              itemCount: itemCount),
+          child: child
         )
       ],
     );

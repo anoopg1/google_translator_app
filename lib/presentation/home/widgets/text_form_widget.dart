@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:language_translator_app/core/colors/colors.dart';
 
 class TextFormWidget extends StatelessWidget {
-  const TextFormWidget({super.key});
+  const TextFormWidget({super.key, required this.child});
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +16,6 @@ class TextFormWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(15)),
           color: kgrey,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: TextFormField(
-            maxLength: 1200,
-            maxLines: 10,
-          ),
-        ));
+        child: child);
   }
 }
